@@ -1,10 +1,15 @@
 import React from 'react';
+import Banner from './Banner';
+import Tools from './Tools/Tools';
 
 const Home = () => {
   return (
-    <div className='px-4 lg:px-12'>
-      <h2>this is home</h2>
-    </div>
+    <>
+      <Banner />
+      <main className='px-4 lg:px-12'>
+        <Tools />
+      </main>
+    </>
   );
 };
 
