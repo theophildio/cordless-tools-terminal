@@ -8,7 +8,7 @@ import Contact from "./Pages/Contact/Contact";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
-import Purchase from "./Pages/Purchase/Purchase";
+import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
 
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/purchase" element={<Purchase />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />

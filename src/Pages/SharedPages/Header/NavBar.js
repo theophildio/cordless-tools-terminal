@@ -8,7 +8,7 @@ const NavBar = () => {
 				<NavLink to="/" className="font-semibold lg:text-lg">Home</NavLink>
 			</li>
 			<li className="lg:mr-2">
-				<NavLink to="/purchase" className="font-semibold lg:text-lg">Purchase</NavLink>
+				<NavLink to="/reviews" className="font-semibold lg:text-lg">Reviews</NavLink>
 			</li>
 			<li className="lg:mr-2">
 				<NavLink to="/blogs" className="font-semibold lg:text-lg">Blogs</NavLink>
@@ -30,7 +30,7 @@ const NavBar = () => {
 	return (
 		<div className="navbar justify-between px-4 lg:px-12">
       <div className="w-full lg:w-1/4">
-        <Link to="/" className="normal-case lg:text-2xl font-semibold text-primary">
+        <Link to="/" className="normal-case text-xl lg:text-2xl font-semibold text-primary">
 					Cordless Tools Terminal
 				</Link>
       </div>

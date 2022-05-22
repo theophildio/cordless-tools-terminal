@@ -3,7 +3,7 @@ import React from "react";
 const Tool = ({tool}) => {
 	const {toolName, img,  description, quantity, price} = tool;
 	return (
-		<div className="card bg-base-100 shadow-xl">
+		<div className="card bg-base-100 shadow-lg">
 			<figure>
 				<img
 					src={img}
@@ -23,7 +23,7 @@ const Tool = ({tool}) => {
 				</div>
 				<div className="card-actions justify-between items-center mt-5">
 					<div className="badge badge-outline">Price: ${price} / Piece</div>
-					<button class="btn btn-sm">Purchase</button>
+					<button className="btn btn-sm">Purchase</button>
 				</div>
 			</div>
 		</div>
