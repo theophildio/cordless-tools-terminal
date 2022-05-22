@@ -4,6 +4,7 @@ import Login from "./Pages/Authentication/Login/Login";
 import Signup from "./Pages/Authentication/Signup/Signup";
 import SocialLogin from "./Pages/Authentication/SocialLogin/SocialLogin";
 import Blogs from "./Pages/Blogs/Blogs";
+import Contact from "./Pages/Contact/Contact";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/socialLogin" element={<SocialLogin />} />
