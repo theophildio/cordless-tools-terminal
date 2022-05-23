@@ -2,7 +2,7 @@ import React from "react";
 
 const BusinessSummary = () => {
 	return (
-		<div className="stats w-full flex lg:flex-row flex-col shadow text-center my-4 lg:my-12">
+		<section className="stats w-full flex lg:flex-row flex-col shadow text-center my-4 lg:my-12">
 			<div className="stat">
 				<div className="stat-figure text-primary">
 					<svg
@@ -79,7 +79,7 @@ const BusinessSummary = () => {
 				<div className="stat-title">Total Employee</div>
 				<div className="stat-value text-secondary">29,191</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

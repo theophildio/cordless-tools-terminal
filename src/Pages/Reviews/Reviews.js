@@ -26,7 +26,7 @@ const Reviews = () => {
     },
   ]
 	return (
-		<div className="px-4 lg:py-12 lg:px-12">
+		<section className="px-4 lg:py-12 lg:px-12">
 			<h2 className="text-4xl font-bold text-secondary text-center mb-8 capitalize">Our Customer Reviews</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {
@@ -36,7 +36,7 @@ const Reviews = () => {
           ></ReviewCard>)
         }
       </div>
-		</div>
+		</section>
 	);
 };
 
