@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
+import Page404 from "./Pages/SharedPages/Page404";
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/socialLogin" element={<SocialLogin />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
 		</div>
