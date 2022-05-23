@@ -27,7 +27,7 @@ const Reviews = () => {
   ]
 	return (
 		<section className="px-4 lg:py-12 lg:px-12">
-			<h2 className="text-4xl font-bold text-secondary text-center mb-8 capitalize">Our Customer Reviews</h2>
+			<h2 className="text-2xl lg:text-4xl font-bold text-secondary text-center mb-8 capitalize">Our Customer Reviews</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {
           reviews.map( review => <ReviewCard 

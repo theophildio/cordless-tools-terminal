@@ -3,7 +3,7 @@ import React from "react";
 const Tool = ({tool}) => {
 	const {toolName, img,  description, quantity, price} = tool;
 	return (
-		<div className="card bg-base-100 shadow-lg">
+		<div className="card bg-base-100 shadow-md">
 			<figure>
 				<img
 					src={img}

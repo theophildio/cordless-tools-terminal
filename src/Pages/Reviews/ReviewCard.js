@@ -5,7 +5,7 @@ const ReviewCard = ({review}) => {
   const showReview = userReview.slice(0, 85);
 	return (
 		<>
-			<div className="card items-center card-side bg-base-100 shadow-xl p-5">
+			<div className="card flex-col lg:flex-row items-center card-side bg-base-100 shadow-md p-5">
 				<div>
 					<div className="avatar">
 						<div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -18,7 +18,7 @@ const ReviewCard = ({review}) => {
 					<p>{showReview}...</p>
 					<div className="rating">
             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+            <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />

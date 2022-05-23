@@ -3,6 +3,7 @@ import Reviews from '../Reviews/Reviews';
 import About from './About';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
+import InquiryForm from './InquiryForm';
 import Tools from './Tools/Tools';
 
 const Home = () => {
@@ -13,7 +14,8 @@ const Home = () => {
         <Tools />
         <About />
         <BusinessSummary />
-        <Reviews />
+        <Reviews /> 
+        <InquiryForm />
       </main>
     </>
   );
