@@ -1,57 +1,9 @@
 import React from 'react';
+import useTools from '../../../hooks/useTools';
 import ToolCard from './ToolCard';
 
 const NewArrival = () => {
-  const tools = [
-    {
-      id: 1,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-    {
-      id: 2,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-    {
-      id: 3,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-    {
-      id: 4,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-    {
-      id: 5,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-    {
-      id: 6,
-      toolName: '20V Lithium Battery Power Tool Electric Power Drill Cordless Drill',
-      img: 'https://i.ibb.co/WkfnLSh/tool-1.webp',
-      description: 'Two-speed adjustment, push forward-high speed, push backward-slow speed and easily cope with various working conditions.',
-      quantity: 700,
-      price: 14
-    },
-  ]
+  const [tools] = useTools();
   return (
     <div>
       <div>
@@ -59,7 +11,7 @@ const NewArrival = () => {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10'>
           {
             tools.map(tool => <ToolCard 
-              key={tool.id}
+              key={tool._id}
               tool={tool}
             ></ToolCard>)
           }

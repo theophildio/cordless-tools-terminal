@@ -1,7 +1,12 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tool = ({tool}) => {
-	const {toolName, img,  description, quantity, price} = tool;
+	const {_id, toolName, img,  description, quantity, price} = tool;
+	const navigate = useNavigate();
+	const handlePurchaseBtn = id => {
+		navigate(`/purchase/${id}`);
+	}
 	return (
 		<div className="card bg-base-100 shadow-md">
 			<figure>
@@ -18,12 +23,12 @@ const Tool = ({tool}) => {
 				</h2>
 				<p>{description}</p>
 				<div className="card-actions justify-between mt-5">
-					<div className="badge badge-outline">Quantity: {quantity}</div>
-					<div className="badge badge-outline">Min. Order: 500 Pieces</div>
+					<div className="badge badge-outline bg-primary text-base-100 p-3">Quantity: {quantity}</div>
+					<div className="badge badge-outline bg-primary text-base-100 p-3">Min. Order: 500 Pieces</div>
 				</div>
 				<div className="card-actions justify-between items-center mt-5">
-					<div className="badge badge-outline">Price: ${price} / Piece</div>
-					<button className="btn btn-sm">Purchase</button>
+					<div className="badge badge-outline bg-primary text-base-100 p-3">Price: ${price} / Piece</div>
+					<Link to={`purchase/${_id}`} onClick={() => handlePurchaseBtn(_id)} className="btn btn-sm">Purchase</Link>
 				</div>
 			</div>
 		</div>

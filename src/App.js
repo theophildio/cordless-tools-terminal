@@ -7,6 +7,7 @@ import Blogs from "./Pages/Blogs/Blogs";
 import Contact from "./Pages/Contact/Contact";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
+import Purchase from "./Pages/Home/Tools/Purchase/Purchase";
 import Profile from "./Pages/Profile/Profile";
 import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/SharedPages/Footer/Footer";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/purchase/:id" element={<Purchase />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/socialLogin" element={<SocialLogin />} />
@@ -32,6 +34,7 @@ function App() {
       </Routes>
       <Footer />
 		</div>
+    
 	);
 }
 

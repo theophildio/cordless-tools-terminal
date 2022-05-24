@@ -1,5 +1,5 @@
 import React from "react";
-import AboutImg from '../../assets/images/banner-bg.jpg';
+import AboutImg from '../../assets/images/about-img.jpg';
 
 const About = () => {
 	return (
@@ -8,7 +8,7 @@ const About = () => {
 				<img
 					src={AboutImg}
           alt=""
-					className="w-full lg:w-2/5 rounded-lg"
+					className="w-full lg:w-2/5 rounded-lg shadow-md"
 				/>
 				<div className="lg:ml-5">
 					<h1 className="text-2xl lg:text-4xl font-bold text-primary">Company Profile</h1>
