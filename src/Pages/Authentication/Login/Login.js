@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../../assets/icons/favicon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase.config";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import Spinner from "../../SharedPages/Spinner";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
 	const [signInWithEmailAndPassword, user, loading, error] =
@@ -14,16 +16,29 @@ const Login = () => {
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
+  const [token] = useToken(user);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/tools";
+  useEffect(() => {
+		if (token) {
+			navigate(from, { replace: true });
+		}
+	}, [token, from, navigate]);
 
-	const onSubmit = async (data) => {
-		console.log(data);
-	};
+  if (loading) {
+    return <Spinner />
+  }
 
 	let errorMessage;
 
 	if (error) {
 		errorMessage = <p className="text-red-500 text-sm">{error?.message}</p>;
 	}
+
+  const onSubmit = async (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+	};
 
 	return (
 		<>
@@ -32,7 +47,7 @@ const Login = () => {
 					<div className="card w-full lg:w-3/5 max-w-xl shadow-2xl bg-base-100">
 						<div className="card-body">
 							<h2 className="text-3xl font-semibold capitalize text-secondary">
-								Login
+								Sign in
 							</h2>
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="form-control w-full">
@@ -87,11 +102,6 @@ const Login = () => {
 										className="input input-bordered w-full"
 									/>
 									<label className="label">
-										<Link to="" className="label-text-alt link link-hover">
-											Forgot password?
-										</Link>
-									</label>
-									<label className="label">
 										{errors.password?.type === "required" && (
 											<span className="label-text-alt text-red-500">
 												{errors.password.message}
@@ -103,16 +113,21 @@ const Login = () => {
 											</span>
 										)}
 									</label>
+                  <label className="label mb-4">
+										<Link to="" className="label-text-alt link link-hover">
+											Forgot password?
+										</Link>
+									</label>
 								</div>
 								{errorMessage}
 								<div>
-									<input type="submit" value="Login" className="btn w-full" />
+									<input type="submit" value="Sign in" className="btn w-full mt-2" />
 								</div>
 							</form>
 							<p className="mt-2">
 								Don't have an account?
 								<Link to="/signup" className="ml-2 text-secondary">
-									Signup
+									Sign Up
 								</Link>
 							</p>
 							<div className="divider">OR</div>

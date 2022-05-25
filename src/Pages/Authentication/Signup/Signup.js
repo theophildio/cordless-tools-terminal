@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Spinner from "../../SharedPages/Spinner";
 import auth from "../../../firebase.config";
+import useToken from "../../../hooks/useToken";
 
 const Signup = () => {
   const [
@@ -19,9 +20,10 @@ const Signup = () => {
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
+  const [token] = useToken(user);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/purchase";
+  let from = location.state?.from?.pathname || "/tools";
 
   if (loading) {
     return <Spinner />
@@ -32,14 +34,13 @@ const Signup = () => {
   if (error) {
     errorMessage = ( <p className="text-red-500 text-sm">{error?.message}</p> )
   }
-  if (user) {
-    navigate(from, {replace: true});
-  }
+  if (token) {
+		navigate(from, { replace: true });
+	}
 
 	const onSubmit = async (data) => {
-		console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
-    navigate('/purchase');
+    navigate('/tools');
 	};
 
   
@@ -143,14 +144,14 @@ const Signup = () => {
 									<input
 										type="submit"
 										value="Sign up"
-										className="btn w-full"
+										className="btn w-full mt-2"
 									/>
 								</div>
 							</form>
 							<p className="mt-2">
 								Already have an account?
 								<Link to="/login" className="ml-2 text-secondary">
-									Login
+									Sign In
 								</Link>
 							</p>
 							<div className="divider">OR</div>

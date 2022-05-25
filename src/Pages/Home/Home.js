@@ -4,14 +4,15 @@ import About from './About';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import InquiryForm from './InquiryForm';
-import Tools from './Tools/Tools';
+import ToolForHome from './Tools/ToolForHome';
+
 
 const Home = () => {
   return (
     <>
       <Banner />
       <main className='px-4 lg:px-12'>
-        <Tools />
+        <ToolForHome />
         <About />
         <BusinessSummary />
         <Reviews /> 
