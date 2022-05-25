@@ -1,11 +1,149 @@
-import React from 'react';
+import React from "react";
+import Logo from "../../../assets/icons/favicon.png";
+import { Link } from "react-router-dom";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
 
 const Signup = () => {
-  return (
-    <div>
-      <h2>this is sign up</h2>
-    </div>
-  );
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm();
+
+	const onSubmit = async (data) => {
+		console.log(data);
+	};
+
+	return (
+		<>
+			<div className="hero min-h-screen py-8">
+				<div className="hero-content flex-col lg:flex-row-reverse">
+					<div className="card w-full lg:w-3/5 max-w-xl shadow-2xl bg-base-100">
+						<div className="card-body">
+							<h2 className="text-3xl font-semibold capitalize text-secondary">
+								Sign up
+							</h2>
+							<form onSubmit={handleSubmit(onSubmit)}>
+								<div className="form-control w-full">
+									<label className="label">
+										<span className="label-text">Name</span>
+									</label>
+									<input
+										{...register("name", {
+											required: {
+												value: true,
+												message: "Name is required.",
+											},
+										})}
+										type="text"
+										className="input input-bordered w-full"
+									/>
+									<label className="label">
+										{errors.name?.type === "required" && (
+											<span className="label-text-alt text-red-500">
+												{errors.name.message}
+											</span>
+										)}
+									</label>
+								</div>
+								<div className="form-control w-full">
+									<label className="label">
+										<span className="label-text">Email</span>
+									</label>
+									<input
+										{...register("email", {
+											required: {
+												value: true,
+												message: "Email is required.",
+											},
+											pattern: {
+												value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+												message: "Please provide valid email address",
+											},
+										})}
+										type="email"
+										className="input input-bordered w-full"
+									/>
+									<label className="label">
+										{errors.email?.type === "required" && (
+											<span className="label-text-alt text-red-500">
+												{errors.email.message}
+											</span>
+										)}
+										{errors.email?.type === "pattern" && (
+											<span className="label-text-alt text-red-500">
+												{errors.email.message}
+											</span>
+										)}
+									</label>
+								</div>
+								<div className="form-control w-full">
+									<label className="label">
+										<span className="label-text">Password</span>
+									</label>
+									<input
+										{...register("password", {
+											required: {
+												value: true,
+												message: "Password is required.",
+											},
+											pattern: {
+												value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/,
+												message: "Minimum 8 and maximum 10 characters, at least one uppercase, lowercase, number and special character"
+											},
+										})}
+										type="password"
+										className="input input-bordered w-full"
+									/>
+									<label className="label">
+										{errors.password?.type === "required" && (
+											<span className="label-text-alt text-red-500">
+												{errors.password.message}
+											</span>
+										)}
+										{errors.password?.type === "pattern" && (
+											<span className="label-text-alt text-red-500">
+												{errors.password.message}
+											</span>
+										)}
+									</label>
+								</div>
+								<div>
+									<input
+										type="submit"
+										value="Sign up"
+										className="btn w-full"
+									/>
+								</div>
+							</form>
+							<p className="mt-2">
+								Already have an account?
+								<Link to="/login" className="ml-2 text-secondary">
+									Login
+								</Link>
+							</p>
+							<div className="divider">OR</div>
+							<div className="flex justify-center items-center">
+								<SocialLogin />
+							</div>
+						</div>
+					</div>
+					<div className="text-center w-full lg:w-2/5">
+						<div>
+							<img src={Logo} alt="Logo" className="w-1/5 mx-auto mb-5" />
+						</div>
+						<h1 className="text-2xl font-bold text-primary">
+							Cordless Tools Terminal
+						</h1>
+						<p className="py-6">
+							Your ultimate cordless tool's solution is here!!!
+						</p>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default Signup;

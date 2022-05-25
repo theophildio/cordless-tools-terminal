@@ -1,9 +1,10 @@
 import React from 'react';
+import Google from '../../../assets/icons/google.png';
 
 const SocialLogin = () => {
   return (
     <div>
-      <h2>this is social login</h2>
+      <button className="btn btn-wide"> <img src={Google} alt="Google Icon" className='w-8 mr-2'/> Continue with Google</button>
     </div>
   );
 };

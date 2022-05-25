@@ -11,7 +11,7 @@ const Purchase = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => setPurchase(data));
-  },[]);
+  },[id]);
 
   return (
     <div className='px-4 lg:px-12 py-5 lg:py-12'>
