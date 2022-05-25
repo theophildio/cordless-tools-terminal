@@ -15,6 +15,8 @@ import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
 import Page404 from "./Pages/SharedPages/Page404";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 	return (
@@ -49,6 +51,7 @@ function App() {
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
+      <ToastContainer />
 		</div>
     
 	);

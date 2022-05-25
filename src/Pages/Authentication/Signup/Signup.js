@@ -3,10 +3,11 @@ import Logo from "../../../assets/icons/favicon.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import Spinner from "../../SharedPages/Spinner";
 import auth from "../../../firebase.config";
 import useToken from "../../../hooks/useToken";
+import { toast } from 'react-toastify';
 
 const Signup = () => {
   const [
@@ -15,6 +16,7 @@ const Signup = () => {
     loading,
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
+	const [sendEmailVerification] = useSendEmailVerification(auth);
 	const {
 		register,
 		formState: { errors },
@@ -40,6 +42,8 @@ const Signup = () => {
 
 	const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
+		toast('Please check your mail inbox to verify email.');
+		sendEmailVerification(data.email);
     navigate('/tools');
 	};
 

@@ -4,10 +4,9 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.config";
 import useToken from "../../../hooks/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
-import Spinner from "../../SharedPages/Spinner";
 
 const SocialLogin = () => {
-	const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+	const [signInWithGoogle, gUser, gError] = useSignInWithGoogle(auth);
 	const [token] = useToken(gUser);
 
 	const navigate = useNavigate();
@@ -18,11 +17,11 @@ const SocialLogin = () => {
 		if (token) {
 			navigate(from, { replace: true });
 		}
+		
 	}, [token, from, navigate]);
 
-	if (gLoading) {
-		return <Spinner />;
-	}
+	
+
 	let errorMsg;
 	if (gError) {
 		errorMsg = <p className="text-red-500 text-sm mb-2">{gError?.message}</p>;
