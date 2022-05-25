@@ -4,8 +4,8 @@ const PurchaseDetails = ({ purchase }) => {
 	const { toolName, img, description, quantity, price } = purchase;
 	return (
 		<div>
-			<div class="flex flex-col w-full lg:flex-row shadow-sm px-5">
-				<div class="grid lg:w-1/2 card bg-base-100 rounded-box place-items-center lg:p-12">
+			<div className="flex flex-col w-full lg:flex-row shadow-sm px-5">
+				<div className="grid lg:w-1/2 card bg-base-100 rounded-box place-items-center lg:p-12">
 				<div className="card lg:w-4/5 shadow-md">
 						<figure>
 							<img src={img} alt="20V Cordless Drill" className="w-1/2" />
@@ -32,8 +32,8 @@ const PurchaseDetails = ({ purchase }) => {
 						</div>
 					</div>
 				</div>
-				<div class="divider lg:divider-horizontal"></div>
-				<div class="grid flex-grow card rounded-box place-items-center lg:p-5">
+				<div className="divider lg:divider-horizontal"></div>
+				<div className="grid flex-grow card rounded-box place-items-center lg:p-5">
 				<div className="card w-full shadow-md bg-base-100">
 						<div className="card-body p-5">
 							<div className="form-control">

@@ -1,19 +1,48 @@
 import React from "react";
 import Logo from "../../../assets/icons/favicon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Spinner from "../../SharedPages/Spinner";
+import auth from "../../../firebase.config";
 
 const Signup = () => {
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/purchase";
+
+  if (loading) {
+    return <Spinner />
+  }
+
+  let errorMessage;
+
+  if (error) {
+    errorMessage = ( <p className="text-red-500 text-sm">{error?.message}</p> )
+  }
+  if (user) {
+    navigate(from, {replace: true});
+  }
 
 	const onSubmit = async (data) => {
 		console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    navigate('/purchase');
 	};
+
+  
 
 	return (
 		<>
@@ -109,6 +138,7 @@ const Signup = () => {
 										)}
 									</label>
 								</div>
+                {errorMessage}
 								<div>
 									<input
 										type="submit"
