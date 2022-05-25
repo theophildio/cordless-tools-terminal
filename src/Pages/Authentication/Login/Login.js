@@ -1,34 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../../assets/icons/favicon.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase.config";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+	useSignInWithEmailAndPassword,
+	useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
 import Spinner from "../../SharedPages/Spinner";
 import useToken from "../../../hooks/useToken";
-
+import { toast } from 'react-toastify';
 const Login = () => {
+	const emailRef = useRef();
 	const [signInWithEmailAndPassword, user, loading, error] =
 		useSignInWithEmailAndPassword(auth);
+	const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
-  const [token] = useToken(user);
-  const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/tools";
-  useEffect(() => {
+	const [token] = useToken(user);
+	const navigate = useNavigate();
+	const location = useLocation();
+	let from = location.state?.from?.pathname || "/tools";
+	useEffect(() => {
 		if (token) {
 			navigate(from, { replace: true });
 		}
 	}, [token, from, navigate]);
 
-  if (loading) {
-    return <Spinner />
-  }
+	if (loading) {
+		return <Spinner />;
+	}
 
 	let errorMessage;
 
@@ -36,9 +41,20 @@ const Login = () => {
 		errorMessage = <p className="text-red-500 text-sm">{error?.message}</p>;
 	}
 
-  const onSubmit = async (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+	const onSubmit = async (data) => {
+		signInWithEmailAndPassword(data.email, data.password);
 	};
+
+	/* const handleResetPassword = async () => {
+		const email = emailRef.current.data;
+		if (!email) {
+				toast('enter your email.')
+		} else {
+				await sendPasswordResetEmail(email)
+				toast('send email')
+		}
+
+	} */
 
 	return (
 		<>
@@ -54,7 +70,7 @@ const Login = () => {
 									<label className="label">
 										<span className="label-text">Email</span>
 									</label>
-									<input
+									<input ref={emailRef}
 										{...register("email", {
 											required: {
 												value: true,
@@ -65,6 +81,7 @@ const Login = () => {
 												message: "Please provide valid email address",
 											},
 										})}
+										name="email"
 										type="email"
 										className="input input-bordered w-full"
 									/>
@@ -113,15 +130,21 @@ const Login = () => {
 											</span>
 										)}
 									</label>
-                  <label className="label mb-4">
-										<Link to="" className="label-text-alt link link-hover">
+									<label className="label mb-4">
+										<button
+											className="label-text-alt link link-hover"
+										>
 											Forgot password?
-										</Link>
+										</button>
 									</label>
 								</div>
 								{errorMessage}
 								<div>
-									<input type="submit" value="Sign in" className="btn w-full mt-2" />
+									<input
+										type="submit"
+										value="Sign in"
+										className="btn w-full mt-2"
+									/>
 								</div>
 							</form>
 							<p className="mt-2">
