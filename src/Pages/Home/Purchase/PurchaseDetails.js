@@ -143,7 +143,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 								<div className="form-control mb-5">
 									<input
 										name="minQuantity"
-										type="text"
+										type="number"
 										placeholder="Min. Order: 500 pieces"
 										className="input input-bordered"
 									/>

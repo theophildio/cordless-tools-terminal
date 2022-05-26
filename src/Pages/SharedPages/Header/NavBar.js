@@ -5,6 +5,7 @@ import auth from "../../../firebase.config";
 import { signOut } from "firebase/auth";
 import Spinner from "../Spinner";
 import Logo from "../../../assets/icons/favicon.png";
+import User from "../../../assets/icons/user.png";
 
 const NavBar = () => {
 	const [user, loading] = useAuthState(auth);
@@ -20,33 +21,57 @@ const NavBar = () => {
 
 	const menuItems = (
 		<>
-			<li className="lg:mr-2">
+			<li className="lg:mr-1">
 				<NavLink to="/" className="font-semibold lg:text-lg">Home</NavLink>
 			</li>
-			<li className="lg:mr-2">
+			<li className="lg:mr-1">
 				<NavLink to="/tools" className="font-semibold lg:text-lg">All Tools</NavLink>
 			</li>
-			<li className="lg:mr-2">
+			<li className="lg:mr-1">
 				<NavLink to="/blogs" className="font-semibold lg:text-lg">Blogs</NavLink>
 			</li>
-			<li className="lg:mr-2">
+			<li className="lg:mr-1">
 				<NavLink to="/contact" className="font-semibold lg:text-lg">Contact Us</NavLink>
 			</li>
-			<li className="lg:mr-2">
-				<NavLink to="/profile" className="font-semibold lg:text-lg">My Profile</NavLink>
-			</li>
+			{
+				!user && 
+				<li>
+					<NavLink to="/login" className="font-semibold lg:text-lg capitalize">Sign in</NavLink> 
+				</li>	
+			}
 			{
 				user && 
-				<li className="lg:mr-2">
-					<NavLink to="/dashboard" className="font-semibold lg:text-lg">Dashboard</NavLink>
-				</li>
+				<div className="dropdown dropdown-end">
+					<div className="flex items-center">
+						{
+							user.displayName ?
+							<span className="font-semibold lg:text-lg uppercase mr-2">{user?.displayName}</span> 
+							:
+							<span className="font-semibold lg:text-lg uppercase mr-2">User</span>
+						}
+						<label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+							<div className="w-10 rounded-full border-2">
+								{
+									user.photoURL ? <img src={user.photoURL} alt="User" /> : <img src={User} alt="User" />
+								}
+							</div>
+						</label>
+					</div>
+					<ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-neutral rounded-box w-52">
+						<li>
+							<Link to="/dashboard" className="font-semibold">Dashboard</Link>
+						</li>
+						<li>
+							<NavLink to="/profile" className="font-semibold">My Profile</NavLink>
+						</li>
+						<li>
+							{
+								user && <button className="text-red-500 capitalize" onClick={logout}><NavLink to="/login" className="font-semibold">Sing out</NavLink></button> 
+							}
+						</li>
+					</ul>
+				</div>
 			}
-			<li className="lg:mr-0">
-				{
-					user ? <button className="bg-red-500 text-base-100 capitalize" onClick={logout}><NavLink to="/login" className="font-semibold lg:text-lg">Sing out</NavLink></button> 
-					: <NavLink to="/login" className="font-semibold lg:text-lg capitalize">Sign in</NavLink>
-				}
-			</li>
 		</>
 	);
 	return (
@@ -78,12 +103,63 @@ const NavBar = () => {
 						tabIndex="0"
 						className="menu menu-compact right-0 dropdown-content mt-3 p-2 shadow bg-accent rounded-box w-52"
 					>
-            {menuItems}
+						{
+							user && 
+							<div className="flex items-center">
+								<label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+									<div className="w-10 rounded-full">
+									{
+										user.photoURL ? <img src={user.photoURL} alt="User" /> : <img src={User} alt="User" />
+									}
+									</div>
+								</label>
+								{
+									user.displayName ?
+									<span className="font-semibold lg:text-lg uppercase ml-2">{user?.displayName}</span> 
+									:
+									<span className="font-semibold lg:text-lg uppercase ml-2">User</span>
+								} 
+							</div>
+						}
+            <li className="lg:mr-2">
+							<NavLink to="/" className="font-semibold lg:text-lg">Home</NavLink>
+						</li>
+						<li className="lg:mr-2">
+							<NavLink to="/tools" className="font-semibold lg:text-lg">All Tools</NavLink>
+						</li>
+						<li className="lg:mr-2">
+							<NavLink to="/blogs" className="font-semibold lg:text-lg">Blogs</NavLink>
+						</li>
+						<li className="lg:mr-2">
+							<NavLink to="/contact" className="font-semibold lg:text-lg">Contact Us</NavLink>
+						</li>
+						{
+							user &&
+							<li>
+								<NavLink to="/profile" className="font-semibold">My Profile</NavLink>
+							</li>		
+						}
+						{
+							user &&
+							<li>
+								<Link to="/dashboard" className="font-semibold">Dashboard</Link>
+							</li>		
+						}
+						{
+							user ? 
+							<li className="lg:mr-2 duration-75">
+								<button className="text-red-500 capitalize" onClick={logout}><NavLink to="/login" className="font-semibold">Sing out</NavLink></button>
+							</li> 
+							: 
+							<li className="lg:mr-2 duration-75">
+								<NavLink to="/login" className="font-semibold lg:text-lg capitalize">Sign in</NavLink> 
+							</li>
+						}
           </ul>
 				</div>
 			</div>
 			<div className="navbar-end hidden lg:w-full lg:flex">
-				<ul className="menu menu-horizontal p-0">
+				<ul className="menu menu-horizontal items-center p-0">
 					{menuItems}
 				</ul>
 			</div>
