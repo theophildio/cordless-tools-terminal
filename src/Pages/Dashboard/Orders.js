@@ -29,7 +29,7 @@ const Orders = () => {
         setOrders(data);
       })
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <div className='p-5'>
@@ -61,7 +61,7 @@ const Orders = () => {
                   </td>
                 <td>
                   <button className='btn border-0 rounded-none btn-xs bg-purple-500 text-base-100 mr-2'>Pending</button>
-                  <button disabled className='btn border-0 rounded-none btn-xs bg-green-500 text-base-100 mr-2'>Successful</button>
+                  <button disabled className='btn border-0 rounded-none btn-xs bg-green-500 text-base-100 mr-2'>Shipped</button>
                   <button className='btn border-0 rounded-none btn-xs bg-red-500 text-base-100'>Cancle</button>
                 </td>
               </tr>

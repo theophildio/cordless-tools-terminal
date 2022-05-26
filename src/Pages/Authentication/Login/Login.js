@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Logo from "../../../assets/icons/favicon.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -6,16 +6,14 @@ import { useForm } from "react-hook-form";
 import auth from "../../../firebase.config";
 import {
 	useSignInWithEmailAndPassword,
-	useSendPasswordResetEmail,
 } from "react-firebase-hooks/auth";
 import Spinner from "../../SharedPages/Spinner";
 import useToken from "../../../hooks/useToken";
-import { toast } from 'react-toastify';
+
 const Login = () => {
 	const emailRef = useRef();
 	const [signInWithEmailAndPassword, user, loading, error] =
 		useSignInWithEmailAndPassword(auth);
-	const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 	const {
 		register,
 		formState: { errors },
@@ -44,17 +42,6 @@ const Login = () => {
 	const onSubmit = async (data) => {
 		signInWithEmailAndPassword(data.email, data.password);
 	};
-
-	/* const handleResetPassword = async () => {
-		const email = emailRef.current.data;
-		if (!email) {
-				toast('enter your email.')
-		} else {
-				await sendPasswordResetEmail(email)
-				toast('send email')
-		}
-
-	} */
 
 	return (
 		<>

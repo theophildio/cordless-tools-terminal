@@ -18,6 +18,13 @@ import Page404 from "./Pages/SharedPages/Page404";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Orders from "./Pages/Dashboard/Orders";
+import AddReview from "./Pages/Dashboard/AddReview";
+import UserProfile from "./Pages/Dashboard/UserProfile";
+import AllOrders from "./Pages/Dashboard/AllOrders";
+import RequireAdmin from "./Pages/Authentication/RequireAdmin";
+import ManageTools from "./Pages/Dashboard/ManageTools";
+import AddTools from "./Pages/Dashboard/AddTools";
+import AllUsers from "./Pages/Dashboard/AllUsers";
 
 function App() {
 	return (
@@ -35,9 +42,33 @@ function App() {
           </RequireAuth>
         }>
           <Route index element={<Orders />}/>
+          <Route path="reviews" element={<AddReview />}/>
+          <Route path="user-profile" element={<UserProfile />}/>
+          <Route path="all-orders" element={
+            <RequireAdmin>
+              <AllOrders />
+            </RequireAdmin>
+          }>
+          </Route>
+          <Route path="manage-tools" element={
+            <RequireAdmin>
+              <ManageTools />
+            </RequireAdmin>
+          }>
+          </Route>
+          <Route path="add-tools" element={
+            <RequireAdmin>
+              <AddTools />
+            </RequireAdmin>
+          }>
+          </Route>
+          <Route path="all-users" element={
+            <RequireAdmin>
+              <AllUsers />
+            </RequireAdmin>
+          }>
+          </Route>
         </Route>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/purchase" element={
           <RequireAuth>
             <Purchase />
@@ -48,6 +79,8 @@ function App() {
           <Purchase />
         </RequireAuth>
         } />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/socialLogin" element={<SocialLogin />} />
