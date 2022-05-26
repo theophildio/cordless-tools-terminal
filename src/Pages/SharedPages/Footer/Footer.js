@@ -5,7 +5,7 @@ const Footer = () => {
   const getDate = new Date();
   const currentYear = getDate.getFullYear();
 	return (
-		<footer className="footer footer-center p-10 bg-neutral text-base-content">
+		<footer className="footer footer-center p-10 bg-neutral text-base-content border-t-2">
 			<div>
         <img src={Logo} alt="Logo" className="w-1/5"/>
         <p className="text-lg text-primary">Cordless Tools Terminal</p>

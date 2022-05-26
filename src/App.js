@@ -17,6 +17,7 @@ import Header from "./Pages/SharedPages/Header/Header";
 import Page404 from "./Pages/SharedPages/Page404";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Orders from "./Pages/Dashboard/Orders";
 
 function App() {
 	return (
@@ -32,7 +33,9 @@ function App() {
           <RequireAuth>
             <Dashboard />
           </RequireAuth>
-        } />
+        }>
+          <Route index element={<Orders />}/>
+        </Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/purchase" element={

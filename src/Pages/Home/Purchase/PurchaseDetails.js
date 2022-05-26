@@ -47,6 +47,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 			email: customerEmail,
 			address: customerAddress,
 			phone: customerPhone,
+			tool: toolName,
 			minQty: inputMinQuantity,
 			price: totalPirce
 		}
@@ -137,6 +138,14 @@ const PurchaseDetails = ({ purchase, user }) => {
 										name="phone"
 										type="tel"
 										placeholder="Phone"
+										className="input input-bordered"
+									/>
+								</div>
+								<div className="form-control mb-5">
+									<input
+										type="text"
+										value={toolName}
+										readOnly
 										className="input input-bordered"
 									/>
 								</div>
