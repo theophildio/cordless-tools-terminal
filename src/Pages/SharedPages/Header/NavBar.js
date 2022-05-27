@@ -47,7 +47,7 @@ const NavBar = () => {
 							user.displayName ?
 							<span className="font-semibold lg:text-lg uppercase mr-2">{user?.displayName}</span> 
 							:
-							<span className="font-semibold lg:text-lg uppercase mr-2">User</span>
+							<span className="font-semibold lg:text-lg uppercase mr-2">Guest User</span>
 						}
 						<label tabIndex="0" className="btn btn-ghost btn-circle avatar">
 							<div className="w-10 rounded-full border-2">
@@ -117,7 +117,7 @@ const NavBar = () => {
 									user.displayName ?
 									<span className="font-semibold lg:text-lg uppercase ml-2">{user?.displayName}</span> 
 									:
-									<span className="font-semibold lg:text-lg uppercase ml-2">User</span>
+									<span className="font-semibold lg:text-lg uppercase ml-2">Guest User</span>
 								} 
 							</div>
 						}

@@ -2,9 +2,10 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const CancleModal = ({ cancleOrder, setCancleOrder, refetch}) => {
-	const { orderedEmail } = cancleOrder;
+	console.log(cancleOrder);
+	const { email } = cancleOrder;
 	const handleDelete = () => {
-		fetch(`http://localhost:5000/order/${orderedEmail}`, {
+		fetch(`http://localhost:5000/order/${email}`, {
 			method: "DELETE",
 			headers: {
 				'authorization': `Bearer ${localStorage.getItem("accessToken")}`,

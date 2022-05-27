@@ -106,7 +106,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 								<div className="form-control mb-5">
 									<input
 										type="text"
-										value={displayName}
+										value={displayName ? displayName : "Guest User"}
 										readOnly
 										className="input input-bordered"
 									/>
