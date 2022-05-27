@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
 
 const PurchaseDetails = ({ purchase, user }) => {
 	const { toolName, img, description, quantity, price } = purchase;
 	const { displayName, email } = user;
-	const [totalPirce, setTotalPrice] = useState(0);
 	const navigate = useNavigate();
 
 	// Min. quantity
@@ -17,58 +16,53 @@ const PurchaseDetails = ({ purchase, user }) => {
 		const customerEmail = email;
 		const customerAddress = e.target.address.value;
 		const customerPhone = e.target.phone.value;
-		const inputMinQuantity = e.target.minQuantity.value;
+		const getMinQuantity = e.target.minQuantity.value;
 		
 		// handle errors
-		if (customerAddress === "" && customerPhone === "" && inputMinQuantity === "") {
-			return toast.error('Please fill up all blank fields.');
-		}
-		if (customerAddress === "") {
-			return toast.error('Please input your address.');
-		}
-		if (customerPhone === "") {
-			return toast.error('Please input your phone number.');
-		}
-		if (inputMinQuantity === "") {
-			return toast.error('Please input minimum quantity.');
-		}
-		// Min quantity handle
-		if (inputMinQuantity < defaultMinQuantity) {
-
-			return toast.error(`Minimum quantity must be ${defaultMinQuantity} pieces!!`);
-		}
-		if (inputMinQuantity > maxQuantity) {
-			return toast.error(`Sorry! ${inputMinQuantity} quantities is not available in stock.`);
-		}
-		const setPrice = inputMinQuantity * price;
-		setTotalPrice(setPrice);
-		const order = {
-			name: customerName,
-			email: customerEmail,
-			address: customerAddress,
-			phone: customerPhone,
-			tool: toolName,
-			minQty: inputMinQuantity,
-			price: totalPirce
-		}
-		fetch('http://localhost:5000/order', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json',
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-			},
-			body: JSON.stringify(order)
-		})
-		.then(res => res.json())
-		.then(inserted => {
-			if(inserted.insertedId) {
-				toast.success('Order place successful. Plase pay now.');
-				navigate('/dashboard')
+		if (customerAddress === "" && customerPhone === "" && getMinQuantity === "") {
+			return toast.error("Please fill up all blank input!");
+		} else if(customerAddress === "") {
+			return toast.error("Please input your shipping address.");
+		} else if(customerPhone === "") {
+			return toast.error("Please input your phone number.");
+		} else if(getMinQuantity === "") {
+			return toast.error("Please input minimum quantity.");
+		} else {
+			if(getMinQuantity < defaultMinQuantity) {
+				return toast.error("Input quantity is less than minimum quantity!");
+			} else if (getMinQuantity > maxQuantity) {
+				return toast.error(`Sorry! ${getMinQuantity} quantities are not available in stock.`);
+			} else {
+				const totalPrice = getMinQuantity * price;
+				const order = {
+					orderedBy: customerName,
+					orderedEmail: customerEmail,
+					shippingAddress: customerAddress,
+					orderedPhone: customerPhone,
+					orderedTool: toolName,
+					orderedMinQty: getMinQuantity,
+					orderedTotalPrice: totalPrice
+				}
+				fetch('http://localhost:5000/order', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+						'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+					},
+					body: JSON.stringify(order)
+				})
+				.then(res => res.json())
+				.then(inserted => {
+					if(inserted.insertedId) {
+						toast.success('Order place successful. Plase pay now.');
+						navigate('/dashboard')
+					}
+					else {
+						toast.error('Order place is unsuccessful. Try again.');
+					}
+				})
 			}
-			else {
-				toast.error('Order place is unsuccessful. Try again.');
-			}
-		})
+		}
 	}
 
 	return (
@@ -129,7 +123,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 									<input
 										name="address"
 										type="text"
-										placeholder="Address"
+										placeholder="Shipping address"
 										className="input input-bordered"
 									/>
 								</div>
@@ -158,7 +152,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 									/>
 								</div>
 								<p className="text-lg font-semibold mt-4">
-									Total Price: ${totalPirce}
+									Price: ${price} / Piece
 								</p>
 								<div className="form-control mt-6">
 									<button className="btn btn-primary">Place Order</button>

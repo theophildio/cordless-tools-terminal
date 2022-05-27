@@ -27,25 +27,25 @@ const Dashboard = () => {
 						{/* <!-- Sidebar content here --> */}
 						<li>
 							{
-								!admin && <Link to="/dashboard" className="text-xl mb-4">My Orders</Link>
+								!admin && <Link to="/dashboard" className="text-lg mb-4">My Orders</Link>
 							}
 							{
-								!admin && <Link to="/dashboard/reviews" className="text-xl mb-4">Add Review</Link>
+								!admin && <Link to="/dashboard/reviews" className="text-lg mb-4">Add Review</Link>
 							}
 							{
-								!admin && <Link to="/dashboard/user-profile" className="text-xl mb-4">Edit Profile</Link>
+								!admin && <Link to="/dashboard/user-profile" className="text-lg mb-4">Edit Profile</Link>
 							}
 							{
-								admin && <Link to="/dashboard/all-orders" className="text-xl mb-4">All Orders</Link>
+								admin && <Link to="/dashboard/all-orders" className="text-lg mb-4">All Orders</Link>
 							}
 							{
-								admin && <Link to="/dashboard/manage-tools" className="text-xl mb-4">Manage Tools</Link>
+								admin && <Link to="/dashboard/manage-tools" className="text-lg mb-4">Manage Tools</Link>
 							}
 							{
-								admin && <Link to="/dashboard/add-tools" className="text-xl mb-4">Add Tools</Link>
+								admin && <Link to="/dashboard/add-tools" className="text-lg mb-4">Add Tools</Link>
 							}
 							{
-								admin && <Link to="/dashboard/all-users" className="text-xl mb-4">All Users</Link>
+								admin && <Link to="/dashboard/all-users" className="text-lg mb-4">All Users</Link>
 							}
 						</li>
 					</ul>
