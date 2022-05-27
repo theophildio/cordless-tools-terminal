@@ -25,8 +25,13 @@ import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import ManageTools from "./Pages/Dashboard/ManageTools";
 import AddTools from "./Pages/Dashboard/AddTools";
 import AllUsers from "./Pages/Dashboard/AllUsers";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./firebase.config";
+import useAdmin from "./hooks/useAdmin";
 
 function App() {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 	return (
 		<div className="App">
 			<Header />
@@ -41,15 +46,17 @@ function App() {
             <Dashboard />
           </RequireAuth>
         }>
-          <Route index element={<Orders />}/>
+          {!admin && <Route index element={<Orders />}/>}
           <Route path="reviews" element={<AddReview />}/>
           <Route path="user-profile" element={<UserProfile />}/>
-          <Route path="all-orders" element={
-            <RequireAdmin>
-              <AllOrders />
-            </RequireAdmin>
-          }>
-          </Route>
+          {admin && 
+            <Route index element={
+              <RequireAdmin>
+                <AllOrders />
+              </RequireAdmin>
+            }>
+            </Route>
+          }
           <Route path="manage-tools" element={
             <RequireAdmin>
               <ManageTools />

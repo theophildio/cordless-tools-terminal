@@ -36,7 +36,7 @@ const Dashboard = () => {
 								!admin && <Link to="/dashboard/user-profile" className="text-lg mb-4">Edit Profile</Link>
 							}
 							{
-								admin && <Link to="/dashboard/all-orders" className="text-lg mb-4">All Orders</Link>
+								admin && <Link to="/dashboard" className="text-lg mb-4">All Orders</Link>
 							}
 							{
 								admin && <Link to="/dashboard/manage-tools" className="text-lg mb-4">Manage Tools</Link>
