@@ -58,10 +58,10 @@ const NavBar = () => {
 						</label>
 					</div>
 					<ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-neutral rounded-box w-52">
-						<li>
+						<li className="mb-2">
 							<Link to="/dashboard" className="font-semibold">Dashboard</Link>
 						</li>
-						<li>
+						<li className="mb-2">
 							<NavLink to="/profile" className="font-semibold">My Profile</NavLink>
 						</li>
 						<li>

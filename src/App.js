@@ -19,7 +19,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Orders from "./Pages/Dashboard/Orders";
 import AddReview from "./Pages/Dashboard/AddReview";
-import UserProfile from "./Pages/Dashboard/UserProfile";
 import AllOrders from "./Pages/Dashboard/AllOrders";
 import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import ManageTools from "./Pages/Dashboard/ManageTools";
@@ -48,7 +47,6 @@ function App() {
         }>
           {!admin && <Route index element={<Orders />}/>}
           <Route path="reviews" element={<AddReview />}/>
-          <Route path="user-profile" element={<UserProfile />}/>
           {admin && 
             <Route index element={
               <RequireAdmin>
