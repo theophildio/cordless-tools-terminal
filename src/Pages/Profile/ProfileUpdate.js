@@ -47,9 +47,14 @@ const ProfileUpdate = () => {
       .then(res => res.json())
       .then(data => {
         if(data) {
-          console.log(data);
           setUpdateProfileData(data);
           toast.success("Profile update successful!!");
+          e.target.address.value = "";
+          e.target.city.value = "";
+          e.target.district.value = "";
+          e.target.country.value = "";
+          e.target.phone.value = "";
+          e.target.inURL.value = "";
         } else {
           toast.error("Profile update failed!!");
         }
