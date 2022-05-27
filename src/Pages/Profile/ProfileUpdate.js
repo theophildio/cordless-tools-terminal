@@ -36,7 +36,6 @@ const ProfileUpdate = () => {
         userPhone: phone,
         userInURL: inURL
       }
-      console.log(updateProfile);
       fetch(`http://localhost:5000/user/${user.email}`, {
         method: 'PUT',
         headers: {
@@ -47,8 +46,13 @@ const ProfileUpdate = () => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        toast.success("Profile update successful!!");
+        if(data) {
+          console.log(data);
+          setUpdateProfileData(data);
+          toast.success("Profile update successful!!");
+        } else {
+          toast.error("Profile update failed!!");
+        }
       })
     }
   }
