@@ -1,25 +1,37 @@
-import React, {  useState } from 'react';
+import { signOut } from 'firebase/auth';
+import React, {  useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.config';
-import Spinner from '../SharedPages/Spinner';
-import CancleModal from './CancleModal';
 import OrderRow from './OrderRow';
 
 const Orders = () => {
   const [user] = useAuthState(auth);
-  const [cancleOrder, setCancleOrder] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
-  const {data: orders, isLoading, refetch} = useQuery("orders", () => fetch("http://localhost:5000/order", {
-      headers: {
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-      },
-    }).then(res => res.json())
-  );
-  if(isLoading) {
-    return <Spinner />;
-  }
-  
+  useEffect(() => {
+    if(user) {
+      fetch(`http://localhost:5000/user-order?user=${user.email}`, {
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/home");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setOrders(data);
+      });
+    }
+  }, [user, navigate]);
+
   return (
     <div className='p-5'>
       <h2 className='text-2xl font-bold py-5 text-primary capitalize'>All orders of <span className='text-secondary'>{user?.displayName}</span></h2>
@@ -41,20 +53,11 @@ const Orders = () => {
                 key={order._id}
                 order={order}
                 index={index}
-                setCancleOrder={setCancleOrder}
-                refetch={refetch}
               />)
             }
           </tbody>
         </table>
       </div>
-      {
-        cancleOrder && <CancleModal 
-          cancleOrder={cancleOrder}
-          setCancleOrder={setCancleOrder}
-          refetch={refetch}
-        />
-      }
     </div>
   );
 };
