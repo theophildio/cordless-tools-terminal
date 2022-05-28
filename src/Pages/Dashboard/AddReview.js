@@ -44,7 +44,7 @@ const AddReview = () => {
         userPhotoURL: user.photoURL ? user.photoURL : "https://i.ibb.co/9rvYVfX/reviewer.png",
         reviewDetail: reviewDetail
       }
-      console.log(review);
+
       fetch('http://localhost:5000/review', {
 					method: 'POST',
 					headers: {
@@ -57,6 +57,7 @@ const AddReview = () => {
 				.then(inserted => {
 					if(inserted.insertedId) {
 						toast.success('Thank you for your review.');
+						e.target.details.value = "";
 					}
 					else {
 						toast.error('Review submit is unsuccessful. Try again.');

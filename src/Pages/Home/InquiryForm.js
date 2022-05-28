@@ -20,7 +20,7 @@ const InquiryForm = () => {
 							<div className="form-control">
 								<input
 									type="email"
-									placeholder="email"
+									placeholder="Email"
 									className="input input-bordered"
 								/>
 							</div>
