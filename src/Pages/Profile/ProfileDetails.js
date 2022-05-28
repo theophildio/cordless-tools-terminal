@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.config';
 
-const ProfileDetails = ({user}) => {
-  const {userAddress, userCity, userCountry, userDistrict, userInURL, userPhone} = user;
+const ProfileDetails = ({users}) => {
+  const [user] = useAuthState(auth);
   return (
     <>
       <div className="w-1/3 card bg-accent rounded-box p-6 lg:pt-12">
@@ -16,12 +17,12 @@ const ProfileDetails = ({user}) => {
           <p className="my-2">Email: {user?.email}</p>
         </div>
         <div>
-          <p className="mb-2">Address: {userAddress}</p>
-          <p className="mb-2">City: {userCity}</p>
-          <p className="mb-2">District: {userDistrict}</p>
-          <p className="mb-2">Country: {userCountry}</p>
-          <p className="mb-2">Phone: {userPhone}</p>
-          <Link to={userInURL} className="mb-2">Linkedin: {userInURL}</Link>
+          <p className="mb-2">Address: {users?.userAddress}</p>
+          <p className="mb-2">City: {users?.userCity}</p>
+          <p className="mb-2">District: {users?.userDistrict}</p>
+          <p className="mb-2">Country: {users?.userCountry}</p>
+          <p className="mb-2">Phone: {users?.userPhone}</p>
+          <p className="mb-2">Linkedin: {users?.userInURL}</p>
         </div>
       </div>
     </>
