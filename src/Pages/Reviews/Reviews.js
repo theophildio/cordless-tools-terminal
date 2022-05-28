@@ -5,7 +5,7 @@ import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
   const {data: reviews, isLoading} = useQuery('reviews', () => 
-    fetch('http://localhost:5000/review', {
+    fetch('https://cordless-tools-terminal.herokuapp.com/review', {
       method: 'GET',
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`

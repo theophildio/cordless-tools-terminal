@@ -25,7 +25,7 @@ const Signup = () => {
   const [token] = useToken(user);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/tools";
+  let from = location.state?.from?.pathname || "/login";
 
   if (loading) {
     return <Spinner />
@@ -44,7 +44,7 @@ const Signup = () => {
     await createUserWithEmailAndPassword(data.email, data.password);
 		toast('Please check your mail inbox to verify email.');
 		sendEmailVerification(data.email);
-    navigate('/tools');
+    navigate('/login');
 	};
 
   

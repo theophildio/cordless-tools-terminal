@@ -6,7 +6,7 @@ import UpdateToolModal from './UpdateToolModal';
 
 const ManageTools = () => {
   const {data: tools, isLoading, refetch} = useQuery("tools", () => 
-    fetch('http://localhost:5000/tool', {
+    fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       }
