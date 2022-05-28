@@ -33,8 +33,8 @@ const Orders = () => {
   }, [user, navigate]);
 
   return (
-    <div className='p-5'>
-      <h2 className='text-2xl font-bold py-5 text-primary capitalize'>All orders of <span className='text-secondary'>{user?.displayName}</span></h2>
+    <div className='px-5'>
+      <h2 className='text-2xl font-bold text-primary capitalize mb-3'>All orders of <span className='text-secondary'>{user?.displayName}</span></h2>
       <div className="overflow-x-auto">
         <table className="table w-full text-center">
           <thead>

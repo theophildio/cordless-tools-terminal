@@ -2,8 +2,9 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.config';
 
-const ProfileDetails = ({users}) => {
+const ProfileDetails = ({users, refetch}) => {
   const [user] = useAuthState(auth);
+  
   return (
     <>
       <div className="w-1/3 card bg-accent rounded-box p-6 lg:pt-12">
@@ -18,7 +19,7 @@ const ProfileDetails = ({users}) => {
         </div>
         <div>
           <p className="mb-2">Address: {users?.userAddress}</p>
-          <p className="mb-2">City: {users?.userCity}</p>
+          <p className="mb-2">Police Station: {users?.userCity}</p>
           <p className="mb-2">District: {users?.userDistrict}</p>
           <p className="mb-2">Country: {users?.userCountry}</p>
           <p className="mb-2">Phone: {users?.userPhone}</p>

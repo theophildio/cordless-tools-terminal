@@ -3,13 +3,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.config';
 
-const ProfileUpdate = () => {
+const ProfileUpdate = ({refetch}) => {
   const [user] = useAuthState(auth);
   const [updateProfieData, setUpdateProfileData] = useState([]);
   const handleProfileUpdate = e => {
     e.preventDefault();
     const address = e.target.address.value;
-    const city = e.target.city.value;
+    const policeStation = e.target.ps.value;
     const district = e.target.district.value;
     const country = e.target.country.value;
     const phone = e.target.phone.value;
@@ -17,8 +17,8 @@ const ProfileUpdate = () => {
     // Error handling
     if (address === "") {
       return toast.error("Please update your address.");
-    } else if (city === "") {
-      return toast.error("Please update your city.");
+    } else if (policeStation === "") {
+      return toast.error("Please update your police station.");
     } else if (district === "") {
       return toast.error("Please update your district.");
     } else if (country === "") {
@@ -30,7 +30,7 @@ const ProfileUpdate = () => {
     } else {
       const updateProfile = {
         userAddress: address,
-        userCity: city,
+        userPS: policeStation,
         userDistrict: district,
         userCountry: country,
         userPhone: phone,
@@ -47,14 +47,15 @@ const ProfileUpdate = () => {
       .then(res => res.json())
       .then(data => {
         if(data) {
-          setUpdateProfileData(data);
+           setUpdateProfileData(data);
           toast.success("Profile update successful!!");
           e.target.address.value = "";
-          e.target.city.value = "";
+          e.target.ps.value = "";
           e.target.district.value = "";
           e.target.country.value = "";
           e.target.phone.value = "";
           e.target.inURL.value = "";
+          refetch();
         } else {
           toast.error("Profile update failed!!");
         }
@@ -74,9 +75,9 @@ const ProfileUpdate = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text capitalize">City</span>
+              <span className="label-text capitalize">Police station</span>
             </label>
-            <input type="text" name='city' className="input input-bordered w-4/5" />
+            <input type="text" name='ps' className="input input-bordered w-4/5" />
           </div>
         </div>
         <div className="flex w-full">

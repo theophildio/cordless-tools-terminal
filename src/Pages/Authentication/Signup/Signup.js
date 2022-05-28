@@ -123,8 +123,8 @@ const Signup = () => {
 												message: "Password is required.",
 											},
 											pattern: {
-												value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/,
-												message: "Minimum 8 and maximum 10 characters, at least one uppercase, lowercase, number and special character"
+												value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/,
+												message: "Minimum 8 and maximum 12 characters, at least one uppercase, lowercase, number and special character"
 											},
 										})}
 										type="password"

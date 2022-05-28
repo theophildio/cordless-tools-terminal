@@ -19,6 +19,12 @@ const Dashboard = () => {
 					>
 						Open Dashboard Options
 					</label>
+					{
+						admin && <h2 className="text-3xl font-bold pl-4 pt-4 capitalize text-primary">Admin dashboard</h2>
+					}
+					{
+						!admin && <h2 className="text-3xl font-bold p-6 capitalize text-primary">User dashboard</h2>
+					}
 					<Outlet />
 				</div>
 				<div className="drawer-side">
