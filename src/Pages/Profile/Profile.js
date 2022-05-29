@@ -25,7 +25,7 @@ const Profile = () => {
 			<div className="flex flex-col w-full lg:flex-row">
 				<ProfileDetails users={users} refetch={refetch}/>
 				<div className="divider lg:divider-horizontal"></div>
-				<div className="w-2/3 min-h-screen bg-neutral rounded-box p-8">
+				<div className="lg:w-2/3 min-h-screen bg-neutral rounded-box p-8">
 					<h3 className="text-3xl font-semibold mb-4 text-primary">My profile</h3>
 					<ProfileUpdate refetch={refetch}/>
 				</div>
