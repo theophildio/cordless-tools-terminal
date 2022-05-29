@@ -66,46 +66,46 @@ const ProfileUpdate = ({refetch}) => {
   return (
     <>
       <form onSubmit={handleProfileUpdate}>
-        <div className="flex w-full">
+        <div className="flex flex-col lg:flex-row  w-full">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">Update your address</span>
             </label>
-            <input type="text" name='address' className="input input-bordered w-4/5" />
+            <input type="text" name='address' className="input input-bordered lg:w-4/5 w-full" />
           </div>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">Police station</span>
             </label>
-            <input type="text" name='ps' className="input input-bordered w-4/5" />
+            <input type="text" name='ps' className="input input-bordered lg:w-4/5 w-full" />
           </div>
         </div>
-        <div className="flex w-full">
+        <div className="flex flex-col lg:flex-row w-full">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">District</span>
             </label>
-            <input type="text" name='district' className="input input-bordered w-4/5" />
+            <input type="text" name='district' className="input input-bordered lg:w-4/5 w-full" />
           </div>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">Country</span>
             </label>
-            <input type="text" name='country' className="input input-bordered w-4/5" />
+            <input type="text" name='country' className="input input-bordered lg:w-4/5 w-full" />
           </div>
         </div>
-        <div className="flex w-full">
+        <div className="flex flex-col lg:flex-row w-full">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">Phone</span>
             </label>
-            <input type="tel" name='phone' className="input input-bordered w-4/5" />
+            <input type="tel" name='phone' className="input input-bordered lg:w-4/5 w-full" />
           </div>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text capitalize">Linkkedin Profile Link</span>
             </label>
-            <input type="url" name='inURL' className="input input-bordered w-4/5" />
+            <input type="url" name='inURL' className="input input-bordered lg:w-4/5 w-full" />
           </div>
         </div>
         <div className="form-control w-full mt-8">
