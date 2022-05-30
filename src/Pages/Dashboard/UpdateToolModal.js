@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateToolModal = ({id}) => {
+const UpdateToolModal = ({id, tools, refetch}) => {
   const {
 		register,
 		formState: { errors },
@@ -33,7 +33,7 @@ const UpdateToolModal = ({id}) => {
 					img: img
 				}
 				// Send to db
-				fetch(`http://localhost:5000/tool/${id}`, {
+				fetch(`https://cordless-tools-terminal.herokuapp.com/tool/${id}`, {
 					method: 'PUT',
 					headers: {
 						'content-type': 'application/json',

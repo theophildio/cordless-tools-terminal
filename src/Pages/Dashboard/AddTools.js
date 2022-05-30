@@ -43,7 +43,7 @@ const AddTools = () => {
           img,
         };
         // Send to Database
-        fetch('http://localhost:5000/tool/additem', {
+        fetch('https://cordless-tools-terminal.herokuapp.com/tool/additem', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',

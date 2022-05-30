@@ -12,7 +12,7 @@ const Orders = () => {
 
   useEffect(() => {
     if(user) {
-      fetch(`http://localhost:5000/user-order?user=${user.email}`, {
+      fetch(`https://cordless-tools-terminal.herokuapp.com/user-order?user=${user.email}`, {
         method: 'GET',
         headers: {
           'authorization': `Bearer ${localStorage.getItem('accessToken')}`

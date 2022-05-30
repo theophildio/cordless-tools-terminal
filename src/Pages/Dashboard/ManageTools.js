@@ -6,7 +6,7 @@ import UpdateToolModal from './UpdateToolModal';
 
 const ManageTools = () => {
   const {data: tools, isLoading, refetch} = useQuery("tools", () => 
-    fetch('http://localhost:5000/tool', {
+    fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       }
@@ -14,7 +14,7 @@ const ManageTools = () => {
   )
   if (isLoading) {
     return <Spinner />
-  } 
+  }
 
   return (
     <div className='px-4'>
@@ -44,7 +44,11 @@ const ManageTools = () => {
           </tbody>
         </table>
       </div>
-      <UpdateToolModal />
+      <UpdateToolModal
+        tools={tools}
+        refetch={refetch}
+      ></UpdateToolModal>
+        
     </div>
   );
 };

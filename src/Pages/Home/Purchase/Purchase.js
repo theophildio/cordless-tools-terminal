@@ -10,7 +10,7 @@ const Purchase = () => {
   const [purchase, setPurchase] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:5000/purchase/${id}`;
+    const url = `https://cordless-tools-terminal.herokuapp.com/purchase/${id}`;
     fetch(url)
     .then(res => res.json())
     .then(data => setPurchase(data));
