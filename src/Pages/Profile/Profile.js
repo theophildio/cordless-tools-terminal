@@ -9,7 +9,7 @@ import ProfileUpdate from "./ProfileUpdate";
 const Profile = () => {
 	const [user] = useAuthState(auth);
   const {data: users, isLoading, refetch} = useQuery("users", () =>
-		fetch(`https://cordless-tools-terminal.herokuapp.com/user/${user?.email}`, {	
+		fetch(`http://localhost:5000/user/${user?.email}`, {	
 			headers: {
 				'authorization': `Bearer ${localStorage.getItem("accessToken")}`
 			}

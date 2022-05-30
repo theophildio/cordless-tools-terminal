@@ -4,7 +4,7 @@ const useTools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
+    fetch('http://localhost:5000/tool', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

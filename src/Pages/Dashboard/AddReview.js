@@ -45,7 +45,7 @@ const AddReview = () => {
         reviewDetail: reviewDetail
       }
 
-      fetch('https://cordless-tools-terminal.herokuapp.com/review', {
+      fetch('http://localhost:5000/review', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',
@@ -69,7 +69,7 @@ const AddReview = () => {
 
 	return (
 		<div className="p-8">
-			<div className="w-1/2 mx-auto mt-8">
+			<div className="lg:w-1/2 mx-auto mt-8">
 				<h2 className="text-2xl font-bold capitalize text-primary mb-4">
 					Add review
 				</h2>

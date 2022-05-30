@@ -36,7 +36,7 @@ const ProfileUpdate = ({refetch}) => {
         userPhone: phone,
         userInURL: inURL
       }
-      fetch(`https://cordless-tools-terminal.herokuapp.com/user/${user.email}`, {
+      fetch(`http://localhost:5000/user/${user.email}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

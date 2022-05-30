@@ -4,7 +4,7 @@ import Spinner from '../SharedPages/Spinner';
 import AllOrderRow from './AllOrderRow';
 
 const AllOrders = () => {
-  const {data: orders, isLoading, refetch} = useQuery("orders", () => fetch("https://cordless-tools-terminal.herokuapp.com/order", {
+  const {data: orders, isLoading, refetch} = useQuery("orders", () => fetch("http://localhost:5000/order", {
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       }
