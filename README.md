@@ -1,12 +1,15 @@
 # Cordless Tools Terminal Manufacturer Website by Theophil Dio
 
 Please visit the Live website [Cordless Tools Terminal](https://cordless-tools-terminal.web.app/).
+Admin Login: 
+user: phero@admin.com
+password: adminPH@123
 
 ## Features of the Cordless Tools Terminal web application
 
 * Cordless Tools Terminal is a MERN Stack Manufacturer Company web application.
 * Key features of this application are: 
-* Email/Password firebase authenticatin with extra Google login and register. 
+* Email/Password firebase authentication with extra Google login and register. 
 * Application has the protected route by which no one can place any tools without register/login. 
 * There are two dashboard for guest users and admin. Both dashboard have seperate options to manage the website. 
 * All user can review on Add review route. The latest review will show on home page.
