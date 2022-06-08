@@ -10,11 +10,11 @@ user: phero@admin.com  password: adminPH@123
 * Cordless Tools Terminal is a MERN Stack Manufacturer Company web application.
 * Key features of this application are: 
 * Email/Password firebase authentication with extra Google login and register. 
-* Application has the protected route by which no one can place any tools without register/login. 
-* There are two dashboard for guest users and admin. Both dashboard have seperate options to manage the website. 
-* All user can review on Add review route. The latest review will show on home page.
-* All user can update their profile. Image upload feature is coming soon. 
-* User can see their indvidual orders in dashboard.
+* Application has a protected route by which no one can place any tools without registering/logging in.
+* There are two dashboards for guest users and admin. Both dashboards have separate options to manage the website.
+* All users can review on Add review route. The latest review will show on the home page.
+* All user can update their profile. The image upload feature is coming soon.
+* User can see their individual orders in the dashboard.
 * Admin can see all orders placed by users. Update products and Add product is coming soon. 
 * Many more features are coming soon.
 
