@@ -1,9 +1,9 @@
 # Cordless Tools Terminal Manufacturer Website by Theophil Dio
 
 Please visit the Live website [Cordless Tools Terminal](https://cordless-tools-terminal.web.app/).
-Admin Login: 
-user: phero@admin.com
-password: adminPH@123
+
+## Admin Login: 
+user: phero@admin.com  password: adminPH@123
 
 ## Features of the Cordless Tools Terminal web application
 
