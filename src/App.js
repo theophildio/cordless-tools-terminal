@@ -27,7 +27,6 @@ import AllUsers from "./Pages/Dashboard/AllUsers";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./firebase.config";
 import useAdmin from "./hooks/useAdmin";
-import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -85,7 +84,6 @@ function App() {
           <Purchase />
         </RequireAuth>
         } />
-        <Route path="/portfolio" element={<MyPortfolio />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />

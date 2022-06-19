@@ -1,10 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import Spinner from '../SharedPages/Spinner';
+import DeleteModal from './DeleteModal';
 import ManageToolsRow from './ManageToolsRow';
 import UpdateToolModal from './UpdateToolModal';
 
 const ManageTools = () => {
+  const [deleteTool, setDeleteTool] = useState(null);
   const {data: tools, isLoading, refetch} = useQuery("tools", () => 
     fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
       headers: {
@@ -29,6 +32,7 @@ const ManageTools = () => {
               <th>Quantity</th>
               <th>Price</th>
               <th>Update Tool</th>
+              <th>Delete Tool</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -38,6 +42,7 @@ const ManageTools = () => {
                 key={tool._id}
                 index={index}
                 tool={tool}
+                setDeleteTool={setDeleteTool} 
                 refetch={refetch}
               />)
             }
@@ -48,6 +53,13 @@ const ManageTools = () => {
         tools={tools}
         refetch={refetch}
       ></UpdateToolModal>
+      {
+        deleteTool && <DeleteModal
+        deleteTool={deleteTool}
+        setDeleteTool={setDeleteTool} 
+        refetch={refetch}
+      ></DeleteModal>
+      }
         
     </div>
   );

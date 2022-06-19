@@ -28,14 +28,14 @@ const AddTools = () => {
     .then(result => {
       if(result.success) {
         const imgUrl = result.data.url;
-        const toolname = data.name;
+        const toolName = data.name;
         const email = user?.email;
         const price = data.price;
         const quantity = parseInt(data.quantity);
         const description = data.detail;
         const img = imgUrl;
         const addTool = {
-          toolname,
+          toolName,
           email,
           price,
           quantity,
