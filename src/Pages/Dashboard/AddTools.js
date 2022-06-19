@@ -1,8 +1,11 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import auth from '../../firebase.config';
 
 const AddTools = () => {
+	const [user] = useAuthState(auth); 
   const {
 		register,
 		formState: { errors },
@@ -24,6 +27,7 @@ const AddTools = () => {
     .then(res => res.json())
     .then(result => {
       if(result.success) {
+				const email = user?.email;
         const imgUrl = result.data.url;
         const toolName = data.name;
         const price = data.price;
@@ -31,6 +35,7 @@ const AddTools = () => {
         const description = data.detail;
         const img = imgUrl;
         const addTool = {
+					email,
           toolName,
           price,
           quantity,
