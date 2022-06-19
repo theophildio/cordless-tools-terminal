@@ -2,12 +2,8 @@ import React from 'react';
 import {FiEdit} from 'react-icons/fi';
 import {FiTrash2} from 'react-icons/fi';
 
-const ManageToolsRow = ({tool, index, setDeleteTool, refetch}) => {
-  const {_id, toolName, img, description, quantity, price} = tool;
-
-  const handleUpdateTool = id => {
-    return <label id={id} htmlFor="update-modal" className="btn modal-button"></label>;
-  }
+const ManageToolsRow = ({tool, index, setDeleteTool, setUpdateTool, refetch}) => {
+  const {toolName, img, description, quantity, price} = tool;
 
   return (
     <>
@@ -24,7 +20,7 @@ const ManageToolsRow = ({tool, index, setDeleteTool, refetch}) => {
         <td>{quantity}</td>
         <td>{price}</td>
         <td>
-          <label onClick={() => handleUpdateTool(_id)} htmlFor="update-modal" className="btn modal-button bg-transparent hover:bg-transparent border-0"><FiEdit className='text-2xl' /></label>
+          <label onClick={() => setUpdateTool(tool)} htmlFor="update-modal" className="btn modal-button bg-transparent hover:bg-transparent border-0"><FiEdit className='text-2xl' /></label>
           </td>
         <td>
           <label onClick={() => setDeleteTool(tool)} htmlFor="delete-tool" className="btn modal-button bg-transparent hover:bg-transparent border-0">

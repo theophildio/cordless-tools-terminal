@@ -7,6 +7,7 @@ import ManageToolsRow from './ManageToolsRow';
 import UpdateToolModal from './UpdateToolModal';
 
 const ManageTools = () => {
+  const [updateTool, setUpdateTool] = useState([]);
   const [deleteTool, setDeleteTool] = useState(null);
   const {data: tools, isLoading, refetch} = useQuery("tools", () => 
     fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
@@ -42,17 +43,21 @@ const ManageTools = () => {
                 key={tool._id}
                 index={index}
                 tool={tool}
-                setDeleteTool={setDeleteTool} 
+                setDeleteTool={setDeleteTool}
+                setUpdateTool={setUpdateTool} 
                 refetch={refetch}
               />)
             }
           </tbody>
         </table>
       </div>
-      <UpdateToolModal
-        tools={tools}
+      {
+        updateTool && <UpdateToolModal
+        updateTool={updateTool}
+        setUpdateTool={setUpdateTool}
         refetch={refetch}
       ></UpdateToolModal>
+      }
       {
         deleteTool && <DeleteModal
         deleteTool={deleteTool}

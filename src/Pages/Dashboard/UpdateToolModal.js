@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateToolModal = ({id, tools, refetch}) => {
+const UpdateToolModal = ({updateTool, setUpdateTool, refetch}) => {
+  const {_id, toolName} = updateTool;
   const {
 		register,
 		formState: { errors },
@@ -26,14 +27,14 @@ const UpdateToolModal = ({id, tools, refetch}) => {
 			if(result.success) {
 				const img = result.data.url;
 				const updateTool = {
-					name: data.name,
-					quantity: data.quantity,
-					price: data.price,
+					toolName: data.name,
+					quantity: parseInt(data.quantity),
+					price: parseInt(data.price),
           description: data.desc,
 					img: img
 				}
 				// Send to db
-				fetch(`https://cordless-tools-terminal.herokuapp.com/tool/${id}`, {
+				fetch(`https://cordless-tools-terminal.herokuapp.com/tool/${_id}`, {
 					method: 'PUT',
 					headers: {
 						'content-type': 'application/json',
@@ -42,11 +43,12 @@ const UpdateToolModal = ({id, tools, refetch}) => {
 					body: JSON.stringify(updateTool)
 				})
 				.then(res => res.json())
-				.then(inserted => {
-					if(inserted.insertedId) {
-            console.log(inserted);
-						toast.success('Tool updated!');
-						reset();
+				.then(data => {
+					if(data.acknowledged) {
+            toast.success('Tool updated successfully.');
+            setUpdateTool([]);
+            refetch();
+            reset();
 					}
 					else {
 						toast.error('Failed to update!');
@@ -61,7 +63,7 @@ const UpdateToolModal = ({id, tools, refetch}) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box relative">
           <label htmlFor="update-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h3 className="font-bold text-lg capitalize">Update tool</h3>
+          <h3 className="font-bold text-lg capitalize">Update tool : {toolName}</h3>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             <label className="label" htmlFor="image">
               Upload Tool Image
@@ -140,7 +142,7 @@ const UpdateToolModal = ({id, tools, refetch}) => {
                     message: "Price is required.",
                   },
                 })}
-                type="number"
+                type="text"
                 className="input input-bordered w-full"
               />
               <label className="label">
@@ -174,6 +176,7 @@ const UpdateToolModal = ({id, tools, refetch}) => {
               </label>
             </div>
             <input
+              id="update-modal"
               type="submit"
               value="Update"
               className="input modal-action justify-center bg-neutral text-base-100 uppercase cursor-pointer w-full input-bordered"
