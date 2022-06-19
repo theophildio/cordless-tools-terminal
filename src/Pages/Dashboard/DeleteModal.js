@@ -13,7 +13,7 @@ const DeleteModal = ({deleteTool, setDeleteTool, refetch}) => {
     .then(res => res.json())
     .then(data => {
       if (data.deletedCount) {
-        toast.error('Deleted!');
+        toast.error('Tool Deleted Successfully!');
         setDeleteTool(null);
         refetch();
       }
