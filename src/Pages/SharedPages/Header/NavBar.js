@@ -28,9 +28,6 @@ const NavBar = () => {
 				<NavLink to="/tools" className="font-semibold lg:text-lg">All Tools</NavLink>
 			</li>
 			<li className="lg:mr-1">
-				<NavLink to="/blogs" className="font-semibold lg:text-lg">Blogs</NavLink>
-			</li>
-			<li className="lg:mr-1">
 				<NavLink to="/contact" className="font-semibold lg:text-lg">Contact Us</NavLink>
 			</li>
 			{
@@ -126,9 +123,6 @@ const NavBar = () => {
 						</li>
 						<li className="lg:mr-2">
 							<NavLink to="/tools" className="font-semibold lg:text-lg">All Tools</NavLink>
-						</li>
-						<li className="lg:mr-2">
-							<NavLink to="/blogs" className="font-semibold lg:text-lg">Blogs</NavLink>
 						</li>
 						<li className="lg:mr-2">
 							<NavLink to="/contact" className="font-semibold lg:text-lg">Contact Us</NavLink>

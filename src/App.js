@@ -4,7 +4,6 @@ import Login from "./Pages/Authentication/Login/Login";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Signup from "./Pages/Authentication/Signup/Signup";
 import SocialLogin from "./Pages/Authentication/SocialLogin/SocialLogin";
-import Blogs from "./Pages/Blogs/Blogs";
 import Contact from "./Pages/Contact/Contact";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
@@ -39,7 +38,6 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/blogs" element={<Blogs />} />
         <Route path="/dashboard" element={
           <RequireAuth>
             <Dashboard />
