@@ -30,7 +30,7 @@ const AddTools = () => {
 				const email = user?.email;
         const imgUrl = result.data.url;
         const toolName = data.name;
-        const price = data.price;
+        const price = parseInt(data.price);
         const quantity = parseInt(data.quantity);
         const description = data.detail;
         const img = imgUrl;
@@ -53,9 +53,9 @@ const AddTools = () => {
         })
         .then(res => res.json())
         .then(data => {
-          if(data.acknowledged) {
-            toast.success('New Tool added successful.');
-            reset();
+          if(data) {
+						toast.success('Added new tool successfully.');
+						reset();
           } else {
             toast.error('Failed to add new Tool!!');
           }
@@ -103,7 +103,7 @@ const AddTools = () => {
 								message: "Tool price is required.",
 							},
 						})}
-						type="number"
+						type="text"
             name="price"
 						className="input input-bordered w-full"
 					/>
@@ -126,7 +126,7 @@ const AddTools = () => {
 								message: "Tool quantity is required.",
 							},
 						})}
-						type="number"
+						type="text"
             name="quantity"
 						className="input input-bordered w-full"
 					/>
