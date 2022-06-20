@@ -43,7 +43,7 @@ const AddTools = () => {
           img,
         };
         // Send to Database
-        fetch('https://cordless-tools-terminal.herokuapp.com/tool', {
+        fetch('http://localhost:5000/tool', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -52,8 +52,8 @@ const AddTools = () => {
           body: JSON.stringify(addTool)
         })
         .then(res => res.json())
-        .then(data => {
-          if(data) {
+        .then(inserted => {
+          if(inserted.insertedId) {
 						toast.success('Added new tool successfully.');
 						reset();
           } else {

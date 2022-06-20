@@ -7,7 +7,7 @@ const useToken = user => {
     const email = user?.user?.email;
     const currentUser = {email: email};
     if (email) {
-      fetch(`https://cordless-tools-terminal.herokuapp.com/user/${email}`, {
+      fetch(`http://localhost:5000/user/${email}`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

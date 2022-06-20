@@ -34,7 +34,7 @@ const UpdateToolModal = ({updateTool, setUpdateTool, refetch}) => {
 					img: img
 				}
 				// Send to db
-				fetch(`https://cordless-tools-terminal.herokuapp.com/tool/${_id}`, {
+				fetch(`http://localhost:5000/tool/${_id}`, {
 					method: 'PUT',
 					headers: {
 						'content-type': 'application/json',

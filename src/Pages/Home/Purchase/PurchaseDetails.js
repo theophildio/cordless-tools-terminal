@@ -43,7 +43,7 @@ const PurchaseDetails = ({ purchase, user }) => {
 					orderedMinQty: getMinQuantity,
 					orderedTotalPrice: totalPrice
 				}
-				fetch('https://cordless-tools-terminal.herokuapp.com/order', {
+				fetch('http://localhost:5000/order', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',
