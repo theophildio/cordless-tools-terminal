@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteModal = ({deleteTool, setDeleteTool, refetch}) => {
   const {_id, toolName} = deleteTool;
   const handleDelete = () => {
-    fetch(`http://localhost:5000/tool/${_id}`, {
+    fetch(`https://cordless-tools-terminal.herokuapp.com/tool/${_id}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

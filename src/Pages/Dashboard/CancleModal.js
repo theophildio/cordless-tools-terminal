@@ -5,7 +5,7 @@ const CancleModal = ({ cancleOrder, setCancleOrder, refetch}) => {
 	console.log(cancleOrder);
 	const { email } = cancleOrder;
 	const handleDelete = () => {
-		fetch(`http://localhost:5000/order/${email}`, {
+		fetch(`https://cordless-tools-terminal.herokuapp.com/order/${email}`, {
 			method: "DELETE",
 			headers: {
 				'authorization': `Bearer ${localStorage.getItem("accessToken")}`,
